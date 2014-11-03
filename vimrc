@@ -20,7 +20,7 @@
 "==========================================
  
 "==========================================
-" Initial Plugin 加载插件
+"Initial Plugin 加载插件
 "==========================================
 
 " 修改leader键
@@ -32,6 +32,7 @@ syntax on
 
 
 " install Vundle bundles
+
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
@@ -68,7 +69,7 @@ set shortmess=atI       " 启动的时候不显示那个援助索马里儿童的
 "set backupdir=/tmp/vimbk/
 
 " 取消备份。 视情况自己改
-set nobackup
+"set nobackup
 " 关闭交换文件
 set noswapfile
 
@@ -89,12 +90,12 @@ set cursorline          " 突出显示当前行
 
 "设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制
 "好处：误删什么的，如果以前屏幕打开，可以找回
-set t_ti= t_te=
+"set t_ti= t_te=
 
 
 "- 则点击光标不会换,用于复制
-set mouse-=a             " 鼠标暂不启用, 键盘党....
-" set mouse=a                 " Automatically enable mouse usage
+"set mouse-=a             " 鼠标暂不启用, 键盘党....
+ set mouse=a                 " Automatically enable mouse usage
 " set mousehide               " Hide the mouse cursor while typing
 
 
@@ -198,16 +199,16 @@ set nrformats=
 
 
 " 相对行号      行号变成相对，可以用 nj  nk   进行跳转 5j   5k 上下跳5行
-set relativenumber number
-au FocusLost * :set norelativenumber number
-au FocusGained * :set relativenumber
+"set relativenumber number
+"au FocusLost * :set norelativenumber number
+"au FocusGained * :set relativenumber
 " 插入模式下用绝对行号, 普通模式下用相对
-autocmd InsertEnter * :set norelativenumber number
-autocmd InsertLeave * :set relativenumber
+"autocmd InsertEnter * :set norelativenumber number
+"autocmd InsertLeave * :set relativenumber
 function! NumberToggle()
   if(&relativenumber == 1)
     set norelativenumber number
-  else
+else
     set relativenumber
   endif
 endfunc
@@ -274,10 +275,10 @@ endif
 " 主要按键重定义
 
 " 关闭方向键, 强迫自己用 hjkl
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
+"map <Left> <Nop>
+"map <Right> <Nop>
+"map <Up> <Nop>
+"map <Down> <Nop>
 
 "Treat long lines as break lines (useful when moving around in them)
 "se swap之后，同物理行上线直接跳
@@ -317,7 +318,7 @@ set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
                                 "    that won't be autoindented
 
 " disbale paste mode when leaving insert mode
-au InsertLeave * set nopaste
+"au InsertLeave * set nopaste
 
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
@@ -522,6 +523,7 @@ nnoremap <buffer> <F10> :exec '!python' shellescape(@%, 1)<cr>
 
 " Set extra options when running in GUI mode
 if has("gui_running")
+    set transparency=10
     set guifont=Monaco:h14
     if has("gui_gtk2")   "GTK2
         set guifont=Monaco\ 12, Monospace\ 12
@@ -533,13 +535,14 @@ if has("gui_running")
     set guitablabel=%M\ %t
     set showtabline=1
     set linespace=2
-    set noimd
+    "set noimd
     set t_Co=256
 endif
 
 " theme主题
 set background=dark
-colorscheme solarized
+"colorscheme solarized
+colorscheme molokai
 set t_Co=256
 
 "colorscheme molokai
@@ -560,4 +563,4 @@ highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
-
+"autocmd BufNewFile * :NERDTreeToggle
